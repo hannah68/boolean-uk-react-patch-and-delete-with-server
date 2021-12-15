@@ -1,7 +1,28 @@
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
-function ToursList(props) {
-  const { tours } = props
+import { fetchData } from "../../../fetch.js"
+
+import { LocalRoutes, APIEndpoints } from "../../../config.js"
+
+function ToursList() {
+  const [tours, setTours] = useState([])
+
+  // console.log('in tourslist', { tours })
+  const setData = data => {
+    // console.log('got new tours', data)
+    setTours(data)
+  }
+
+  useEffect(() => {
+
+    const fetchParams = {
+      url: APIEndpoints.tours,
+      cb: setData
+    }
+    fetchData(fetchParams)
+
+  }, [])
 
   return (
     <>
@@ -14,8 +35,8 @@ function ToursList(props) {
             <li key={index}>
               <h3>{name}</h3>
               <p>Price: £{price}</p>
-              <Link to={`/admin/tours/${tour.id}/edit`} state={{ tour }}>
-                Edit Tour
+              <Link to={`${LocalRoutes.adminTours}/${tour.id}/edit`} state={{ tour }}>
+                Edit/Delete Tour
               </Link>
             </li>
           )

@@ -1,50 +1,35 @@
-import { useEffect, useState } from "react"
 import { Route, Routes } from "react-router"
 import { Link } from "react-router-dom"
+
 import HomePage from "./Home"
 import BookTicket from "./tickets/BookTicket"
-import EditTicket from "./tickets/EditTicket"
 import ViewTickets from "./tickets/ViewTickets"
 
+import { LocalRoutes } from "../../config.js"
+
 function UserRouter() {
-  const [tickets, setTickets] = useState([])
-
-  useEffect(() => {
-    fetch("http://localhost:3030/tickets")
-      .then(res => res.json())
-      .then(data => setTickets(data))
-  }, [])
-
   return (
     <>
       <header>
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to={LocalRoutes.home}>Home</Link>
             </li>
             <li>
-              <Link to="/tickets">Tickets</Link>
+              <Link to={LocalRoutes.tickets}>Tickets</Link>
             </li>
             <li>
-              <Link to="/admin">Admin Pages</Link>
+              <Link to={LocalRoutes.admin}>Admin Pages</Link>
             </li>
           </ul>
         </nav>
       </header>
+
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/tours/:id/book" element={<BookTicket />} />
-        <Route
-          path="/tickets"
-          element={<ViewTickets tickets={tickets} />}
-        />
-        <Route
-          path="/tickets/:id/edit"
-          element={
-            <EditTicket tickets={tickets} setTickets={setTickets} />
-          }
-        />
+        <Route path={LocalRoutes.home} element={<HomePage />} />
+        <Route path={LocalRoutes.toursIdBook} element={<BookTicket />} />
+        <Route path={LocalRoutes.tickets} element={<ViewTickets />} />
       </Routes>
     </>
   )
