@@ -19,7 +19,7 @@ The instructor will demonstarte the following:
 
 You will implement the above and:
 
-- A PATCH request to the "/tours" endpoint in `/user/tickets/EditTicket.js`
+- A PATCH request to the "/tickets" endpoint in `/user/tickets/EditTicket.js`
 - A DELETE request to the "/tickets" endpoint in `/user/tickets/EditTicket.js`
 
 ## Further Work
