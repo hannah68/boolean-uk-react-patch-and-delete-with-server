@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router"
 
 function CreateTourPage(props) {
   const { tours, setTours } = props
@@ -10,10 +11,25 @@ function CreateTourPage(props) {
 
   console.log({ tourToCreate })
 
+  const navigate = useNavigate()
+
   function handleSubmit(event) {
     event.preventDefault()
 
-    // Redirect to "/" with navigate and useNavigate
+    const fetchOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(tourToCreate),
+    }
+
+    fetch("http://localhost:3030/tours", fetchOptions)
+      .then(res => res.json())
+      .then(createdTour => {
+        setTours([...tours, createdTour])
+        navigate("/admin")
+      })
   }
 
   function handleChange(event) {

@@ -1,10 +1,16 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 function ToursList() {
   const [tours, setTours] = useState([])
 
   console.log({ tours })
+
+  useEffect(() => {
+    fetch("http://localhost:3030/tours")
+      .then(res => res.json())
+      .then(data => setTours(data))
+  }, [])
 
   return (
     <ul>

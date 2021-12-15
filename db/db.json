@@ -3,7 +3,21 @@
     {
       "id": 1,
       "name": "Madame Tussauds",
-      "price": 8.5
+      "price": "10",
+      "tickets": [
+        {
+          "id": 1,
+          "tourId": 1,
+          "email": "steve@mail.com",
+          "quantity": "4",
+          "date": "2021-12-14T12:34:47",
+          "tour": {
+            "id": 1,
+            "name": "Madame Tussauds",
+            "price": 8.5
+          }
+        }
+      ]
     },
     {
       "id": 2,
@@ -26,15 +40,20 @@
       "id": 1,
       "tourId": 1,
       "email": "steve@mail.com",
-      "quantity": 2,
-      "date": "2021-12-14T12:34:47.514Z"
+      "quantity": "4",
+      "date": "2021-12-14T12:34:47",
+      "tour": {
+        "id": 1,
+        "name": "Madame Tussauds",
+        "price": 8.5
+      }
     },
     {
       "id": 2,
       "tourId": 3,
       "email": "rico@mail.com",
       "quantity": 1,
-      "date": "2021-12-14T12:34:47.514Z"
+      "date": "2021-12-14T12:34:47"
     }
   ]
 }

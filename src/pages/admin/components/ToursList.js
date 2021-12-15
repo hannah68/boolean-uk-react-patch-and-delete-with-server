@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 function ToursList(props) {
   const { tours } = props
 
@@ -12,6 +14,9 @@ function ToursList(props) {
             <li key={index}>
               <h3>{name}</h3>
               <p>Price: £{price}</p>
+              <Link to={`/admin/tours/${tour.id}/edit`} state={{ tour }}>
+                Edit Tour
+              </Link>
             </li>
           )
         })}

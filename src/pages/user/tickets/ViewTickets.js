@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
-function ViewTickets() {
-  const [tickets, setTickets] = useState([])
+function ViewTickets(props) {
+  const { tickets } = props
 
   return (
     <ul>
@@ -14,6 +14,9 @@ function ViewTickets() {
             <p>Email: {email}</p>
             <p>Quantity: {quantity}</p>
             <p>Date: {date}</p>
+            <Link to={`/tickets/${ticket.id}/edit`} state={{ ticket }}>
+              Edit Ticket
+            </Link>
           </li>
         )
       })}
