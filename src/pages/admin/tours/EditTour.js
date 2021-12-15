@@ -24,29 +24,6 @@ function EditTourPage(props) {
 
   function handleSubmit(event) {
     event.preventDefault()
-
-    const fetchOptions = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(tourToEdit),
-    }
-
-    fetch(`http://localhost:3030/tours/${tourToEdit.id}`, fetchOptions)
-      .then(res => res.json())
-      .then(updatedTour => {
-        const updatedTours = tours.map(tour => {
-          if (tour.id === updatedTour.id) {
-            return updatedTour
-          }
-
-          return tour
-        })
-
-        setTours(updatedTours)
-        navigate("/admin")
-      })
   }
 
   function handleChange(event) {
@@ -56,18 +33,7 @@ function EditTourPage(props) {
     setTourToEdit({ ...tourToEdit, [name]: value })
   }
 
-  function handleDelete(targetTour) {
-    fetch(`http://localhost:3030/tours/${targetTour.id}`)
-      .then(res => res.json())
-      .then(() => {
-        const updatedTours = tours.filter(
-          tour => tour.id !== targetTour.id
-        )
-
-        setTours(updatedTours)
-        navigate("/admin")
-      })
-  }
+  function handleDelete(targetTour) {}
 
   return (
     <form className="form-stack" onSubmit={handleSubmit}>
