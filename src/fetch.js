@@ -5,7 +5,6 @@ export const fetchData = async (props) => {
 
       const response = options ? await fetch(url, options) : await fetch(url)
       const data = await response.json()
-      console.log('fetched data', data)
       if ( cb ) cb(data)
 
   } catch (error) {
