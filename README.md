@@ -1,4 +1,4 @@
-# GET and POST with a Server
+# PATCH and DELETE with a Server
 
 In this exercise, you are going to practice using routes alongside `fetch` requests to a server.
 
