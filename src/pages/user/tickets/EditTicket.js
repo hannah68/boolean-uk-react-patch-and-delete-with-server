@@ -61,7 +61,9 @@ function EditTicket(props) {
   }
 
   function handleDelete(targetTicket) {
-    fetch(`http://localhost:3030/tickets/${targetTicket.id}`)
+    fetch(`http://localhost:3030/tickets/${targetTicket.id}`, {
+      method: "DELETE",
+    })
       .then(res => res.json())
       .then(() => {
         const updatedTickets = tickets.filter(

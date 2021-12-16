@@ -57,7 +57,9 @@ function EditTourPage(props) {
   }
 
   function handleDelete(targetTour) {
-    fetch(`http://localhost:3030/tours/${targetTour.id}`)
+    fetch(`http://localhost:3030/tours/${targetTour.id}`, {
+      method: "DELETE",
+    })
       .then(res => res.json())
       .then(() => {
         const updatedTours = tours.filter(
