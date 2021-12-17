@@ -11,36 +11,40 @@ import { LocalRoutes } from "../../config.js"
 function AdminRouter() {
   return (
     <>
-      <header>
-        <nav>
-          <ul>
-            <li>
-              <Link to={LocalRoutes.adminHome}>Home</Link>
-            </li>
-            <li>
-              <Link to={LocalRoutes.admin}>Admin Dashboard</Link>
-            </li>
-            <li>
-              <Link to={LocalRoutes.adminToursCreate}>Create a Tour</Link>
-            </li>
-            <li>
-              <Link to={LocalRoutes.adminTicketsSummary}>Tickets Summary</Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <Routes>
-        <Route path={LocalRoutes.adminHome} element={<Dashboard />} />
-        <Route
-          path={LocalRoutes.adminToursCreate}
-          element={<CreateTourPage />}
-        />
-        <Route
-          path={LocalRoutes.adminToursEdit}
-          element={<EditTourPage />}
-        />
-        <Route path={LocalRoutes.adminTicketsSummary} element={<TicketsSummary />} />
-      </Routes>
+      <h2>Admin Pages</h2>
+      <nav>
+        <ul>
+          <li>
+            <Link to={LocalRoutes.home}>User Home</Link>
+          </li>
+          <li>
+            <Link to={LocalRoutes.admin}>Admin Dashboard</Link>
+          </li>
+          <li>
+            <Link to={LocalRoutes.adminToursCreate}>Create a Tour</Link>
+          </li>
+          <li>
+            <Link to={LocalRoutes.adminTicketsSummary}>Tickets Summary</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <main>
+
+        <Routes>
+          <Route path={LocalRoutes.adminHome} element={<Dashboard />} />
+          <Route
+            path={LocalRoutes.adminToursCreate}
+            element={<CreateTourPage />}
+          />
+          <Route
+            path={LocalRoutes.adminToursEditWithId}
+            element={<EditTourPage />}
+          />
+          <Route path={LocalRoutes.adminTicketsSummary} element={<TicketsSummary />} />
+        </Routes>
+
+      </main>
     </>
   )
 }

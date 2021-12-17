@@ -49,6 +49,10 @@ function EditTourPage(props) {
 
     if ( edited && location.state) {
 
+      const tour = {
+        name: tourToEdit.name ? tourToEdit.name : location.state.tour.name,
+        price: tourToEdit.price ? tourToEdit.price : location.state.tour.price
+      }
       const tourId = location.state.tour.id
 
       const fetchOptions = {
@@ -56,13 +60,13 @@ function EditTourPage(props) {
         headers: {
           "Content-Type": 'application/json'
         },
-        body: JSON.stringify(tourToEdit)
+        body: JSON.stringify(tour)
       }
 
       const fetchDataParams = {
         url: `${APIEndpoints.tours}/${tourId}`,
         options: fetchOptions,
-        cb: () => navigate(LocalRoutes.admin)
+        cb: (data) => navigate(LocalRoutes.admin)
       }
 
       fetchData(fetchDataParams)
@@ -88,14 +92,8 @@ function EditTourPage(props) {
 
   return (
     <>
-      { location.state && (
-        <>
-          <h3>{location.state.tour.name}</h3>
-          <p>Price: £{location.state.tour.price}</p>
-        </>
-      )}
+      <h3>Edit a Tour</h3>
       <form className="form-stack" onSubmit={handleSubmit}>
-        <h2>Edit a Tour</h2>
         <label htmlFor="name">Name</label>
         <input
           type="text"
@@ -110,7 +108,7 @@ function EditTourPage(props) {
           id="price"
           name="price"
           onChange={handleChange}
-          value={tourToEdit.price}
+          value={tourToEdit.price ? tourToEdit.price : location.state.tour.price}
         />
         <button type="submit">Edit Tour</button>
         <button type="button" onClick={() => handleDelete(tourToEdit)}>

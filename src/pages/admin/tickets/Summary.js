@@ -23,10 +23,10 @@ function TicketsSummary() {
   }, [])
 
   return (
-    <main>
-      <h1>Tickets Summary</h1>
+    <>
+      <h3>Tickets Summary</h3>
       <TicketsTable tickets={tickets} />
-    </main>
+    </>
   )
 }
 
