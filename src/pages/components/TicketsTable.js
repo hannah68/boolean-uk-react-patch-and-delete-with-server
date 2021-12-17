@@ -14,8 +14,8 @@ function TicketsTable(props) {
           <th>Total</th>
           <th>Ref</th>
         </tr>
-        {tickets.map((ticket, index) => {
-          return <TicketRow key={index} ticket={ticket} />
+        {tickets.map((ticket) => {
+          return <TicketRow key={ticket.id} ticket={ticket} />
         })}
       </tbody>
     </table>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import Dashboard from "./components/Dashboard"
 import CreateTourPage from "./components/tours/CreateTour"
 import EditTourPage from "./components/tours/EditTour"
-import TicketsSummary from "./components/tickets/TicketsSummary"
+import TicketsList from "../components/TicketsList"
 
 import { LocalRoutes } from "../../config.js"
 
@@ -43,7 +43,15 @@ function AdminRouter (props) {
             path={LocalRoutes.adminToursEditWithId}
             element={<EditTourPage tours={tours} setTours={setTours} />}
           />
-          <Route path={LocalRoutes.adminTicketsSummary} element={<TicketsSummary tickets={tickets}/>} />
+          <Route
+            path={LocalRoutes.adminTicketsSummary}
+            element={
+              <TicketsList
+                tickets={tickets}
+                isSummary={true}
+              />
+            }
+          />
         </Routes>
 
       </main>

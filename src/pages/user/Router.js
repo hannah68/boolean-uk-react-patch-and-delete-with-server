@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 import HomePage from "./components/Home"
 import BookTicket from "./components/tickets/BookTicket"
-import TicketsList from "./components/tickets/TicketsList"
+import TicketsList from "../components/TicketsList"
 
 import { LocalRoutes } from "../../config.js"
 
@@ -35,7 +35,15 @@ function UserRouter (props) {
             path={LocalRoutes.toursBookWithId}
             element={<BookTicket tickets={tickets} setTickets={setTickets}/>}
           />
-          <Route path={LocalRoutes.tickets} element={<TicketsList tickets={tickets}/>} />
+          <Route
+            path={LocalRoutes.tickets}
+            element={
+              <TicketsList
+                tickets={tickets}
+                isSummary={false}
+              />
+            }
+          />
         </Routes>
 
       </main>
