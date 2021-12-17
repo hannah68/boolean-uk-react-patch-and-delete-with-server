@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 
 import { fetchData } from "../../../../fetch.js"
 
-import { LocalRoutes, APIEndpoints } from "../../../../config.js"
+import { LocalRoutes, APIEndpoints, UIText } from "../../../../config.js"
 
 function EditTourPage(props) {
   const { tours, setTours } = props
@@ -107,9 +107,9 @@ function EditTourPage(props) {
 
   return (
     <>
-      <h3>Edit a Tour</h3>
+      <h3>{UIText.editTour}</h3>
       <form className="form-stack" onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">{UIText.tourName}</label>
         <input
           type="text"
           id="name"
@@ -117,7 +117,7 @@ function EditTourPage(props) {
           onChange={handleChange}
           value={tourToEdit.name ? tourToEdit.name : location.state.tour.name}
         />
-        <label htmlFor="price">price</label>
+        <label htmlFor="price">{UIText.tourPrice}</label>
         <input
           type="text"
           id="price"
@@ -125,10 +125,11 @@ function EditTourPage(props) {
           onChange={handleChange}
           value={tourToEdit.price ? tourToEdit.price : location.state.tour.price}
         />
-        <button type="submit">Edit Tour</button>
+        <button type="submit">{UIText.editTour}</button>
         <button type="button" onClick={() => handleDelete(tourToEdit)}>
-          Delete Tour
+          {UIText.deleteTour}
         </button>
+        <Link to={LocalRoutes.admin}>{UIText.cancel}</Link>
       </form>
     </>
   )

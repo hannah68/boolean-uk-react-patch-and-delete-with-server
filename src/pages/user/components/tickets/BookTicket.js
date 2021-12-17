@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom"
 
 import { fetchData } from "../../../../fetch.js"
 
-import { LocalRoutes, APIEndpoints } from "../../../../config.js"
+import { LocalRoutes, APIEndpoints, UIText } from "../../../../config.js"
 
 function BookTicket (props) {
   const { tickets, setTickets } = props
@@ -79,9 +79,9 @@ function BookTicket (props) {
 
   return (
     <>
-      <h2>Book Tickets</h2>
+      <h2>{UIText.bookTickets}</h2>
       <form className="form-stack" onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">{UIText.ticketEmail}</label>
         <input
           type="email"
           id="email"
@@ -89,7 +89,7 @@ function BookTicket (props) {
           onChange={handleChange}
           value={ticketToCreate.email}
         />
-        <label htmlFor="quantity">Quantity</label>
+        <label htmlFor="quantity">{UIText.ticketQuantity}</label>
         <input
           type="text"
           id="quantity"
@@ -97,7 +97,7 @@ function BookTicket (props) {
           onChange={handleChange}
           value={ticketToCreate.quantity}
         />
-        <label htmlFor="date">Date</label>
+        <label htmlFor="date">{UIText.ticketDate}</label>
         <input
           type="datetime-local"
           id="date"
@@ -105,8 +105,8 @@ function BookTicket (props) {
           onChange={handleChange}
           value={ticketToCreate.date}
         />
-        <button type="submit">Book Ticket</button>
-        <Link to="/">Cancel</Link>
+        <button type="submit">{UIText.bookTickets}</button>
+        <Link to={LocalRoutes.home}>{UIText.cancel}</Link>
       </form>
     </>
   )

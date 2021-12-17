@@ -1,5 +1,7 @@
 import TicketRow from "./TicketRow"
 
+import { UIText } from "../../config.js"
+
 function TicketsTable(props) {
   const { tickets } = props
 
@@ -7,12 +9,12 @@ function TicketsTable(props) {
     <table>
       <tbody>
         <tr>
-          <th>Tour</th>
-          <th>Customer Email</th>
-          <th>Quantity</th>
-          <th>Price per Ticket</th>
-          <th>Total</th>
-          <th>Ref</th>
+          <th>{UIText.tour}</th>
+          <th>{UIText.ticketEmail}</th>
+          <th>{UIText.ticketQuantity}</th>
+          <th>{UIText.ticketPrice}</th>
+          <th>{UIText.orderTotal}</th>
+          <th>{UIText.orderReference}</th>
         </tr>
         {tickets.map((ticket) => {
           return <TicketRow key={ticket.id} ticket={ticket} />

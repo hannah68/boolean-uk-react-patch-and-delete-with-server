@@ -1,12 +1,12 @@
 import ToursList from "../../components/ToursList"
 
-import { LocalRoutes } from "../../../config.js"
+import { LocalRoutes, UIText } from "../../../config.js"
 
 function Dashboard(props) {
   const { tours } = props
 
   const path = LocalRoutes.adminToursEdit
-  const pathText = 'Edit/Delete Tour'
+  const pathText = UIText.editDeleteTour
 
   return (
     <ToursList tours={tours} path={path} pathText={pathText}/>

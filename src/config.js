@@ -20,3 +20,33 @@ export class APIEndpoints {
     static tours = `${APIEndpoints.baseURL}/tours`
     static tickets = `${APIEndpoints.baseURL}/tickets`
 }
+
+export class UIText {
+  static userHome = "User Home"
+  static dashboard = "Dashboard"
+  static createTour = "Create Tour"
+  static tickets = "Tickets"
+
+  static home = "Home"
+  static adminPages = "Admin Pages"
+
+  static bookTickets = "Book Tickets"
+  static ticketQuantity = "Quantity"
+  static ticketDate = "Date"
+  static ticketEmail = "Email"
+  static ticketPrice = "Price per Ticket"
+  static orderTotal = "Total"
+  static orderReference = "Ref"
+  static cancel = "Cancel"
+
+  static availableTours = "Available Tours"
+  static tour = 'Tour'
+
+  static editDeleteTour = "Edit/Delete Tour"
+  static editTour = "Edit Tour"
+  static deleteTour = "Delete Tour"
+
+  static tourPrice = "Price"
+  static tourName = "Name"
+
+}

@@ -1,11 +1,11 @@
 import ToursList from "../../components/ToursList"
 
-import { LocalRoutes } from "../../../config.js"
+import { LocalRoutes, UIText } from "../../../config.js"
 
 function HomePage (props) {
   const { tours } = props
   const path = LocalRoutes.toursBook
-  const pathText = 'Book Tickets'
+  const pathText = UIText.bookTickets
 
   return (
     <ToursList tours={tours} path={path} pathText={pathText}/>

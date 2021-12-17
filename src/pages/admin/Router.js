@@ -6,27 +6,27 @@ import CreateTourPage from "./components/tours/CreateTour"
 import EditTourPage from "./components/tours/EditTour"
 import TicketsList from "../components/TicketsList"
 
-import { LocalRoutes } from "../../config.js"
+import { LocalRoutes, UIText } from "../../config.js"
 
 function AdminRouter (props) {
   const { tours, setTours, tickets } = props
 
   return (
     <>
-      <h2>Admin Pages</h2>
+      <h2>{UIText.adminPages}</h2>
       <nav>
         <ul>
           <li>
-            <Link to={LocalRoutes.home}>User Home</Link>
+            <Link to={LocalRoutes.home}>{UIText.userHome}</Link>
           </li>
           <li>
-            <Link to={LocalRoutes.admin}>Admin Dashboard</Link>
+            <Link to={LocalRoutes.admin}>{UIText.dashboard}</Link>
           </li>
           <li>
-            <Link to={LocalRoutes.adminToursCreate}>Create a Tour</Link>
+            <Link to={LocalRoutes.adminToursCreate}>{UIText.createTour}</Link>
           </li>
           <li>
-            <Link to={LocalRoutes.adminTicketsSummary}>Tickets Summary</Link>
+            <Link to={LocalRoutes.adminTicketsSummary}>{UIText.tickets}</Link>
           </li>
         </ul>
       </nav>

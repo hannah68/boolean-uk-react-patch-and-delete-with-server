@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom"
 
+import { UIText } from "../../config.js"
+
 function ToursList (props) {
   const { tours, path, pathText } = props
 
   return (
     <>
-      <h3>Available Tours</h3>
+      <h3>{UIText.availableTours}</h3>
       <ul>
         {tours.map((tour) => {
           const { name, price } = tour
@@ -13,7 +15,7 @@ function ToursList (props) {
           return (
             <li key={tour.id}>
               <h3>{name}</h3>
-              <p>Price: £{price}</p>
+              <p>{UIText.tourPrice}: £{price}</p>
               <Link to={`${path}/${tour.id}`} state={{ tour }}>
                 {pathText}
               </Link>

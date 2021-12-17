@@ -5,24 +5,24 @@ import HomePage from "./components/Home"
 import BookTicket from "./components/tickets/BookTicket"
 import TicketsList from "../components/TicketsList"
 
-import { LocalRoutes } from "../../config.js"
+import { LocalRoutes, UIText } from "../../config.js"
 
 function UserRouter (props) {
   const { tours, tickets, setTickets } = props
 
   return (
     <>
-      <h2>User Pages</h2>
+      <h2>{UIText.userPages}</h2>
       <nav>
         <ul>
           <li>
-            <Link to={LocalRoutes.home}>Home</Link>
+            <Link to={LocalRoutes.home}>{UIText.home}</Link>
           </li>
           <li>
-            <Link to={LocalRoutes.tickets}>Tickets</Link>
+            <Link to={LocalRoutes.tickets}>{UIText.tickets}</Link>
           </li>
           <li>
-            <Link to={LocalRoutes.admin}>Admin Pages</Link>
+            <Link to={LocalRoutes.admin}>{UIText.adminPages}</Link>
           </li>
         </ul>
       </nav>

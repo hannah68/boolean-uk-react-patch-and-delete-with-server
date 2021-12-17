@@ -1,5 +1,7 @@
 import TicketsTable from './TicketsTable'
 
+import { UIText } from "../../config.js"
+
 function TicketsList (props) {
   const { tickets, isSummary } = props
 
@@ -17,10 +19,10 @@ function TicketsList (props) {
             return (
               <li key={id}>
                 <h3>{tour.name}</h3>
-                <p>Email: {email}</p>
-                <p>Quantity: {quantity}</p>
-                <p>Date: {date}</p>
-                <p>Ref: {id}</p>
+                <p>{UIText.ticketEmail}: {email}</p>
+                <p>{UIText.ticketQuantity}: {quantity}</p>
+                <p>{UIText.ticketDate}: {date}</p>
+                <p>{UIText.orderReference}: {id}</p>
               </li>
             )
           })}
