@@ -1,0 +1,32 @@
+import { useEffect, useState } from "react"
+
+import { Link } from "react-router-dom"
+
+import { LocalRoutes } from "../../config.js"
+
+function ToursList (props) {
+  const { tours, path, pathText } = props
+
+  return (
+    <>
+      <h3>Available Tours</h3>
+      <ul>
+        {tours.map((tour, index) => {
+          const { name, price } = tour
+
+          return (
+            <li key={index}>
+              <h3>{name}</h3>
+              <p>Price: £{price}</p>
+              <Link to={`${path}/${tour.id}`} state={{ tour }}>
+                {pathText}
+              </Link>
+            </li>
+          )
+        })}
+      </ul>
+    </>
+  )
+}
+
+export default ToursList

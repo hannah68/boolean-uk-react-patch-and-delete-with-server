@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
-import { fetchData } from "../../../fetch.js"
+import { fetchData } from "../../../../fetch.js"
 
-import { LocalRoutes, APIEndpoints } from "../../../config.js"
+import { LocalRoutes, APIEndpoints } from "../../../../config.js"
 
 function CreateTourPage(props) {
   const [tourToCreate, setTourToCreate] = useState({

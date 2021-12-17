@@ -1,13 +1,18 @@
 import { Route, Routes } from "react-router"
 import { Link } from "react-router-dom"
 
-import HomePage from "./Home"
-import BookTicket from "./tickets/BookTicket"
-import ViewTickets from "./tickets/ViewTickets"
+import HomePage from "./components/Home"
+import BookTicket from "./components/tickets/BookTicket"
+import TicketsList from "./components/tickets/TicketsList"
 
 import { LocalRoutes } from "../../config.js"
 
-function UserRouter() {
+function UserRouter (props) {
+  const { data } = props
+  const { tours, tickets } = data
+
+  //console.log('User router', data, tours, tickets)
+
   return (
     <>
       <h2>User Pages</h2>
@@ -28,9 +33,12 @@ function UserRouter() {
       <main>
 
         <Routes>
-          <Route path={LocalRoutes.home} element={<HomePage />} />
-          <Route path={LocalRoutes.toursBookWithId} element={<BookTicket />} />
-          <Route path={LocalRoutes.tickets} element={<ViewTickets />} />
+          <Route path={LocalRoutes.home} element={<HomePage tours={tours.data}/>} />
+          <Route
+            path={LocalRoutes.toursBookWithId}
+            element={<BookTicket tickets={tickets.data} setTickets={tickets.setData}/>}
+          />
+          <Route path={LocalRoutes.tickets} element={<TicketsList tickets={tickets.data}/>} />
         </Routes>
 
       </main>

@@ -1,14 +1,19 @@
 import { Route, Routes } from "react-router"
 import { Link } from "react-router-dom"
 
-import CreateTourPage from "./tours/CreateTour"
-import EditTourPage from "./tours/EditTour"
-import Dashboard from "./Dashboard"
-import TicketsSummary from "./tickets/Summary"
+import Dashboard from "./components/Dashboard"
+import CreateTourPage from "./components/tours/CreateTour"
+import EditTourPage from "./components/tours/EditTour"
+import TicketsSummary from "./components/tickets/TicketsSummary"
 
 import { LocalRoutes } from "../../config.js"
 
-function AdminRouter() {
+function AdminRouter (props) {
+  const { data } = props
+  const { tours, tickets } = data
+  console.log('blah tours', tours)
+  console.log('blah tickets', tickets)
+
   return (
     <>
       <h2>Admin Pages</h2>
@@ -32,16 +37,16 @@ function AdminRouter() {
       <main>
 
         <Routes>
-          <Route path={LocalRoutes.adminHome} element={<Dashboard />} />
+          <Route path={LocalRoutes.adminHome} element={<Dashboard tours={tours.data} />} />
           <Route
             path={LocalRoutes.adminToursCreate}
-            element={<CreateTourPage />}
+            element={<CreateTourPage tours={tours.data} setTours={tours.setData} />}
           />
           <Route
             path={LocalRoutes.adminToursEditWithId}
-            element={<EditTourPage />}
+            element={<EditTourPage tours={tours.data} setTours={tours.setData} />}
           />
-          <Route path={LocalRoutes.adminTicketsSummary} element={<TicketsSummary />} />
+          <Route path={LocalRoutes.adminTicketsSummary} element={<TicketsSummary tickets={tickets.data}/>} />
         </Routes>
 
       </main>

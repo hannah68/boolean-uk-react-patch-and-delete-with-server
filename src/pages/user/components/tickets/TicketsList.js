@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 
-import { fetchData } from "../../../fetch.js"
+import { fetchData } from "../../../../fetch.js"
 
-import { APIEndpoints } from "../../../config.js"
+import { APIEndpoints } from "../../../../config.js"
 
-function ViewTickets() {
+function TicketsList() {
   const [tickets, setTickets] = useState([])
 
   const setData = data => setTickets(data)
@@ -41,4 +41,4 @@ function ViewTickets() {
   )
 }
 
-export default ViewTickets
+export default TicketsList

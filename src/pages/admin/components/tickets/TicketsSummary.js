@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 
 import TicketsTable from "./components/TicketsTable"
-import { fetchData } from "../../../fetch.js"
+import { fetchData } from "../../../../fetch.js"
 
-import { APIEndpoints } from "../../../config.js"
+import { APIEndpoints } from "../../../../config.js"
 
 function TicketsSummary() {
   const [tickets, setTickets] = useState([])
