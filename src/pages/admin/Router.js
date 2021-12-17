@@ -10,8 +10,6 @@ import { LocalRoutes } from "../../config.js"
 
 function AdminRouter (props) {
   const { tours, setTours, tickets } = props
-  console.log('blah tours', tours)
-  console.log('blah tickets', tickets)
 
   return (
     <>
