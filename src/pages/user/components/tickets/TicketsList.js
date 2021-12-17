@@ -7,12 +7,16 @@ import { APIEndpoints } from "../../../../config.js"
 function TicketsList (props) {
   const { tickets } = props
 
+  console.log('tickets', tickets)
+
   return (
     <>
       <h3>Tickets</h3>
       <ul>
         {tickets.map((ticket, index) => {
-          const { email, quantity, date, tour } = ticket
+          const { email, quantity, date, tour, id } = ticket
+
+          console.log('my ticket info', email, quantity, date, tour)
 
           return (
             <li key={index}>
@@ -20,6 +24,7 @@ function TicketsList (props) {
               <p>Email: {email}</p>
               <p>Quantity: {quantity}</p>
               <p>Date: {date}</p>
+              <p>Ref: {id}</p>
             </li>
           )
         })}

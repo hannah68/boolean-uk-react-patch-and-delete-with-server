@@ -12,6 +12,7 @@ function TicketsTable(props) {
           <th>Quantity</th>
           <th>Price per Ticket</th>
           <th>Total</th>
+          <th>Ref</th>
         </tr>
         {tickets.map((ticket, index) => {
           return <TicketRow key={index} ticket={ticket} />

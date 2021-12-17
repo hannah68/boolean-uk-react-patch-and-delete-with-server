@@ -11,11 +11,11 @@ function ToursList (props) {
     <>
       <h3>Available Tours</h3>
       <ul>
-        {tours.map((tour, index) => {
+        {tours.map((tour) => {
           const { name, price } = tour
 
           return (
-            <li key={index}>
+            <li key={tour.id}>
               <h3>{name}</h3>
               <p>Price: £{price}</p>
               <Link to={`${path}/${tour.id}`} state={{ tour }}>

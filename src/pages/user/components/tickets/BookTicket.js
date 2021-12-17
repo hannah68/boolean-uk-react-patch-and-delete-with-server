@@ -5,7 +5,9 @@ import { fetchData } from "../../../../fetch.js"
 
 import { LocalRoutes, APIEndpoints } from "../../../../config.js"
 
-function BookTicket() {
+function BookTicket (props) {
+  const { tickets, setTickets } = props
+
   const [ticketToCreate, setTicketToCreate] = useState({
     tourId: null,
     email: "",
@@ -24,7 +26,7 @@ function BookTicket() {
 
     if ( submitted ) {
 
-      const fetchOptions = {
+      let fetchOptions = {
         method: 'POST',
         headers: {
           "Content-Type": 'application/json'
@@ -35,7 +37,24 @@ function BookTicket() {
       const fetchDataParams = {
         url: APIEndpoints.tickets,
         options: fetchOptions,
-        cb: data => navigate(LocalRoutes.tickets)
+        cb: bookedTicket => {
+          const { tour } = location.state
+          const myTicket = {
+            id: bookedTicket.id,
+            tourId: ticketToCreate.tourId,
+            email: ticketToCreate.email,
+            quantity: ticketToCreate.quantity,
+            date: ticketToCreate.date,
+            tour: {
+                id: tour.id,
+                name: tour.name,
+                price: tour.price
+            }
+          }
+          //console.log('book', ticketToCreate)
+          setTickets([...tickets, myTicket])
+          navigate(LocalRoutes.tickets)
+        }
       }
 
       fetchData(fetchDataParams)
@@ -49,7 +68,11 @@ function BookTicket() {
 
     if (location.state) {
       const { tour } = location.state
-      setTicketToCreate({ ...ticketToCreate, tourId: tour.id })
+      console.log('blahdsaf', tour)
+      setTicketToCreate({
+        ...ticketToCreate,
+        tourId: tour.id
+      })
       setSubmitted(true)
     }
   }

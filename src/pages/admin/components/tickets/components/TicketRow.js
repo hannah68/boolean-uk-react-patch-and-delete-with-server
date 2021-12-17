@@ -10,6 +10,7 @@ function TicketRow(props) {
       <td>{ticket.quantity}</td>
       <td>{tour.price}</td>
       <td>{ticket.quantity * tour.price}</td>
+      <td>{ticket.id}</td>
     </tr>
   )
 }
