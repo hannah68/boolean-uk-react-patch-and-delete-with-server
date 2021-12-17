@@ -44,7 +44,7 @@ function CreateTourPage (props) {
       setSubmitted(false);
     }
 
-  }, [navigate, tourToCreate, submitted])
+  }, [navigate, tourToCreate, tours, setTours, submitted])
 
   function handleSubmit(event) {
     event.preventDefault()

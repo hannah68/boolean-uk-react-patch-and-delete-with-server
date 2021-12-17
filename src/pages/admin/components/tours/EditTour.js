@@ -6,6 +6,8 @@ import { fetchData } from "../../../../fetch.js"
 import { LocalRoutes, APIEndpoints } from "../../../../config.js"
 
 function EditTourPage(props) {
+  const { tours, setTours } = props
+
   const [tourToEdit, setTourToEdit] = useState({
     name: "",
     price: 0,
@@ -13,8 +15,6 @@ function EditTourPage(props) {
 
   const [edited, setEdited] = useState(false)
   const [deleted, setDeleted] = useState(false)
-
-  // console.log({ tourToEdit })
 
   const location = useLocation()
   const navigate = useNavigate()
@@ -37,13 +37,17 @@ function EditTourPage(props) {
       const fetchDataParams = {
         url: `${APIEndpoints.tours}/${tourId}`,
         options: fetchOptions,
-        cb: data => navigate(LocalRoutes.admin)
+        cb: deletedTour => {
+          const updatedTours = tours.filter(tour => tour.id !== tourId)
+          setTours(updatedTours)
+          navigate(LocalRoutes.admin)
+        }
       }
 
       fetchData(fetchDataParams)
       setDeleted(false);
     }
-  }, [navigate, location.state, deleted])
+  }, [navigate, location.state, setTours, tours, deleted])
 
   useEffect(() => {
 
@@ -66,13 +70,24 @@ function EditTourPage(props) {
       const fetchDataParams = {
         url: `${APIEndpoints.tours}/${tourId}`,
         options: fetchOptions,
-        cb: (data) => navigate(LocalRoutes.admin)
+        cb: editedTour => {
+          //console.log('edited tour', editedTour)
+          const updatedTours = tours.map(tour => {
+            if (tour.id === editedTour.id) {
+              return editedTour
+            }
+            return tour
+          })
+
+          setTours(updatedTours)
+          navigate(LocalRoutes.admin)
+        }
       }
 
       fetchData(fetchDataParams)
       setEdited(false);
     }
-  }, [navigate, tourToEdit, location.state, edited])
+  }, [navigate, location.state, tourToEdit, setTours, tours, edited])
 
   function handleSubmit(event) {
     event.preventDefault()

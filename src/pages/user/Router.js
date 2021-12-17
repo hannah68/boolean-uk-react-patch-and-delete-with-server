@@ -8,7 +8,7 @@ import TicketsList from "./components/tickets/TicketsList"
 import { LocalRoutes } from "../../config.js"
 
 function UserRouter (props) {
-  const { tours, setTours, tickets, setTickets } = props
+  const { tours, tickets, setTickets } = props
 
   return (
     <>

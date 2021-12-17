@@ -1,9 +1,3 @@
-import { useEffect, useState } from "react"
-
-import { fetchData } from "../../../../fetch.js"
-
-import { APIEndpoints } from "../../../../config.js"
-
 function TicketsList (props) {
   const { tickets } = props
 

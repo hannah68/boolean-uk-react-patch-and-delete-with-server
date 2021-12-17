@@ -1,8 +1,4 @@
-import { useEffect, useState } from "react"
-
 import { Link } from "react-router-dom"
-
-import { LocalRoutes } from "../../config.js"
 
 function ToursList (props) {
   const { tours, path, pathText } = props

@@ -63,7 +63,7 @@ function BookTicket (props) {
       setSubmitted(false);
     }
 
-  }, [ticketToCreate, navigate, submitted])
+  }, [location.state, tickets, setTickets, ticketToCreate, navigate, submitted])
 
   function handleSubmit(event) {
     event.preventDefault()
