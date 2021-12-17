@@ -42,6 +42,8 @@ function BookTicket (props) {
         options: fetchOptions,
         cb: bookedTicket => {
           const { tour } = location.state
+
+          // this creates a ticket in its cached form, for display
           const myTicket = {
             ...ticketToCreate,
             id: bookedTicket.id,
@@ -51,7 +53,7 @@ function BookTicket (props) {
                 price: tour.price
             }
           }
-          
+
           setTickets([...tickets, myTicket])
           navigate(LocalRoutes.tickets)
         }
