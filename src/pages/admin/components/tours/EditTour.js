@@ -109,19 +109,19 @@ function EditTourPage(props) {
     <>
       <h3>{UIText.editTour}</h3>
       <form className="form-stack" onSubmit={handleSubmit}>
-        <label htmlFor="name">{UIText.tourName}</label>
+        <label htmlFor={UIText.tourName}>{UIText.tourName}</label>
         <input
           type="text"
-          id="name"
-          name="name"
+          id={UIText.tourName}
+          name={UIText.tourName}
           onChange={handleChange}
           value={tourToEdit.name ? tourToEdit.name : location.state.tour.name}
         />
-        <label htmlFor="price">{UIText.tourPrice}</label>
+        <label htmlFor={UIText.tourPrice}>{UIText.tourPrice}</label>
         <input
-          type="text"
-          id="price"
-          name="price"
+          type={UIText.tourPrice}
+          id={UIText.tourPrice}
+          name={UIText.tourPrice}
           onChange={handleChange}
           value={tourToEdit.price ? tourToEdit.price : location.state.tour.price}
         />
@@ -129,7 +129,7 @@ function EditTourPage(props) {
         <button type="button" onClick={() => handleDelete(tourToEdit)}>
           {UIText.deleteTour}
         </button>
-        <Link to={LocalRoutes.admin}>{UIText.cancel}</Link>
+        <button onClick={() => navigate(LocalRoutes.admin)}>{UIText.cancel}</button>
       </form>
     </>
   )

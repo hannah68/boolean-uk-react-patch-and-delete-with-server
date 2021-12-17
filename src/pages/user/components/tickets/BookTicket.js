@@ -81,32 +81,32 @@ function BookTicket (props) {
     <>
       <h2>{UIText.bookTickets}</h2>
       <form className="form-stack" onSubmit={handleSubmit}>
-        <label htmlFor="email">{UIText.ticketEmail}</label>
+        <label htmlFor={UIText.ticketEmail}>{UIText.ticketEmail}</label>
         <input
           type="email"
-          id="email"
-          name="email"
+          id={UIText.ticketEmail}
+          name={UIText.ticketEmail}
           onChange={handleChange}
           value={ticketToCreate.email}
         />
-        <label htmlFor="quantity">{UIText.ticketQuantity}</label>
+        <label htmlFor={UIText.ticketQuantity}>{UIText.ticketQuantity}</label>
         <input
           type="text"
-          id="quantity"
-          name="quantity"
+          id={UIText.ticketQuantity}
+          name={UIText.ticketQuantity}
           onChange={handleChange}
           value={ticketToCreate.quantity}
         />
         <label htmlFor="date">{UIText.ticketDate}</label>
         <input
           type="datetime-local"
-          id="date"
-          name="date"
+          id={UIText.ticketDate}
+          name={UIText.ticketDate}
           onChange={handleChange}
           value={ticketToCreate.date}
         />
         <button type="submit">{UIText.bookTickets}</button>
-        <Link to={LocalRoutes.home}>{UIText.cancel}</Link>
+        <button onClick={() => navigate(LocalRoutes.home)}>{UIText.cancel}</button>
       </form>
     </>
   )

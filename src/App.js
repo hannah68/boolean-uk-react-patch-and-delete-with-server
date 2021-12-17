@@ -6,7 +6,7 @@ import UserRouter from "./pages/user/Router"
 
 import { fetchData } from "./fetch.js"
 
-import { LocalRoutes, APIEndpoints } from "./config.js"
+import { LocalRoutes, APIEndpoints, UIText } from "./config.js"
 
 import "./styles.css"
 
@@ -33,7 +33,7 @@ function App() {
 
   return (
     <>
-      <h1>Tour Manager</h1>
+      <h1>{UIText.title}</h1>
       <Routes>
         <Route
           path={`${LocalRoutes.home}*`}

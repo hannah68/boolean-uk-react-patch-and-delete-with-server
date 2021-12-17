@@ -22,6 +22,8 @@ export class APIEndpoints {
 }
 
 export class UIText {
+
+  static title = "Tour Manager"
   static userHome = "User Home"
   static dashboard = "Dashboard"
   static createTour = "Create Tour"
