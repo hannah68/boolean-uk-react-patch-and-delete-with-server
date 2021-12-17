@@ -9,10 +9,13 @@ import "./styles.css"
 
 function App() {
   return (
-    <Routes>
-      <Route path={`${LocalRoutes.home}*`} element={<UserRouter />} />
-      <Route path={`${LocalRoutes.admin}/*`} element={<AdminRouter />} />
-    </Routes>
+    <>
+      <h1>Tour Manager</h1>
+      <Routes>
+        <Route path={`${LocalRoutes.home}*`} element={<UserRouter />} />
+        <Route path={`${LocalRoutes.admin}/*`} element={<AdminRouter />} />
+      </Routes>
+    </>
   )
 }
 

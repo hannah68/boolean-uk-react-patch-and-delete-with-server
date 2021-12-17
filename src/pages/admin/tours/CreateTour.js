@@ -54,26 +54,28 @@ function CreateTourPage(props) {
   }
 
   return (
-    <form className="form-stack" onSubmit={handleSubmit}>
-      <h2>Create a Tour</h2>
-      <label htmlFor="name">Name</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        onChange={handleChange}
-        value={tourToCreate.name}
-      />
-      <label htmlFor="price">price</label>
-      <input
-        type="text"
-        id="price"
-        name="price"
-        onChange={handleChange}
-        value={tourToCreate.price}
-      />
-      <button type="submit">Create Tour</button>
-    </form>
+    <>
+      <h3>Create a Tour</h3>
+      <form className="form-stack" onSubmit={handleSubmit}>
+        <label htmlFor="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          onChange={handleChange}
+          value={tourToCreate.name}
+        />
+        <label htmlFor="price">price</label>
+        <input
+          type="text"
+          id="price"
+          name="price"
+          onChange={handleChange}
+          value={tourToCreate.price}
+        />
+        <button type="submit">Create Tour</button>
+      </form>
+    </>
   )
 }
 

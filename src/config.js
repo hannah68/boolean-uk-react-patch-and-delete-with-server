@@ -3,13 +3,15 @@ export class LocalRoutes {
     static admin = "/admin"
     static tickets = "/tickets"
     static tours = "/tours"
-    static toursIdBook = `${LocalRoutes.tours}/:id/book`
+    static toursBook = `${LocalRoutes.tours}/book`
+    static toursBookWithId = `${LocalRoutes.toursBook}/:id`
 
-    static adminHome = LocalRoutes.home
+    static adminHome = "/"
     static adminTours = "tours"
     static adminTickets = "tickets"
     static adminToursCreate = `${LocalRoutes.adminTours}/create`
-    static adminToursEdit = `${LocalRoutes.adminTours}/:id/edit`
+    static adminToursEdit = `${LocalRoutes.adminTours}/edit`
+    static adminToursEditWithId = `${LocalRoutes.adminToursEdit}/:id`
     static adminTicketsSummary = `${LocalRoutes.adminTickets}/summary`
 }
 

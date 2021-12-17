@@ -62,34 +62,37 @@ function BookTicket() {
   }
 
   return (
-    <form className="form-stack" onSubmit={handleSubmit}>
-      <label htmlFor="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        onChange={handleChange}
-        value={ticketToCreate.email}
-      />
-      <label htmlFor="quantity">Quantity</label>
-      <input
-        type="text"
-        id="quantity"
-        name="quantity"
-        onChange={handleChange}
-        value={ticketToCreate.quantity}
-      />
-      <label htmlFor="date">Date</label>
-      <input
-        type="datetime-local"
-        id="date"
-        name="date"
-        onChange={handleChange}
-        value={ticketToCreate.date}
-      />
-      <button type="submit">Book Ticket</button>
-      <Link to="/">Cancel</Link>
-    </form>
+    <>
+      <h2>Book Tickets</h2>
+      <form className="form-stack" onSubmit={handleSubmit}>
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          onChange={handleChange}
+          value={ticketToCreate.email}
+        />
+        <label htmlFor="quantity">Quantity</label>
+        <input
+          type="text"
+          id="quantity"
+          name="quantity"
+          onChange={handleChange}
+          value={ticketToCreate.quantity}
+        />
+        <label htmlFor="date">Date</label>
+        <input
+          type="datetime-local"
+          id="date"
+          name="date"
+          onChange={handleChange}
+          value={ticketToCreate.date}
+        />
+        <button type="submit">Book Ticket</button>
+        <Link to="/">Cancel</Link>
+      </form>
+    </>
   )
 }
 
