@@ -1,53 +1,45 @@
-import { useEffect, useState } from "react"
 import { Route, Routes } from "react-router"
 import { Link } from "react-router-dom"
+
 import CreateTourPage from "./tours/CreateTour"
+import EditTourPage from "./tours/EditTour"
 import Dashboard from "./Dashboard"
 import TicketsSummary from "./tickets/Summary"
-import EditTourPage from "./tours/EditTour"
+
+import { LocalRoutes } from "../../config.js"
 
 function AdminRouter() {
-  const [tours, setTours] = useState([])
-
-  console.log({ tours })
-
-  useEffect(() => {
-    fetch("http://localhost:3030/tours")
-      .then(res => res.json())
-      .then(data => setTours(data))
-  }, [])
-
   return (
     <>
       <header>
         <nav>
           <ul>
             <li>
-              <Link to="/admin/">Admin Dashboard</Link>
+              <Link to={LocalRoutes.adminHome}>Home</Link>
             </li>
             <li>
-              <Link to="/admin/tours/create">Create a Tour</Link>
+              <Link to={LocalRoutes.admin}>Admin Dashboard</Link>
             </li>
             <li>
-              <Link to="/admin/tickets/summary">Tickets Summary</Link>
+              <Link to={LocalRoutes.adminToursCreate}>Create a Tour</Link>
             </li>
             <li>
-              <Link to="/">User Pages</Link>
+              <Link to={LocalRoutes.adminTicketsSummary}>Tickets Summary</Link>
             </li>
           </ul>
         </nav>
       </header>
       <Routes>
-        <Route path="/" element={<Dashboard tours={tours} />} />
+        <Route path={LocalRoutes.adminHome} element={<Dashboard />} />
         <Route
-          path="/tours/create"
-          element={<CreateTourPage tours={tours} setTours={setTours} />}
+          path={LocalRoutes.adminToursCreate}
+          element={<CreateTourPage />}
         />
         <Route
-          path="/tours/:id/edit"
-          element={<EditTourPage tours={tours} setTours={setTours} />}
+          path={LocalRoutes.adminToursEdit}
+          element={<EditTourPage />}
         />
-        <Route path="tickets/summary" element={<TicketsSummary />} />
+        <Route path={LocalRoutes.adminTicketsSummary} element={<TicketsSummary />} />
       </Routes>
     </>
   )

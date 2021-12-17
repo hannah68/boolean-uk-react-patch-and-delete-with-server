@@ -1,7 +1,24 @@
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
 
-function ViewTickets(props) {
-  const { tickets } = props
+import { fetchData } from "../../../fetch.js"
+
+import { APIEndpoints } from "../../../config.js"
+
+function ViewTickets() {
+  const [tickets, setTickets] = useState([])
+
+  const setData = data => setTickets(data)
+
+  useEffect(() => {
+
+    const fetchDataParams = {
+      url: APIEndpoints.tickets,
+      cb: setData
+    }
+
+    fetchData(fetchDataParams)
+
+  }, [])
 
   return (
     <ul>
@@ -14,9 +31,6 @@ function ViewTickets(props) {
             <p>Email: {email}</p>
             <p>Quantity: {quantity}</p>
             <p>Date: {date}</p>
-            <Link to={`/tickets/${ticket.id}/edit`} state={{ ticket }}>
-              Edit Ticket
-            </Link>
           </li>
         )
       })}
