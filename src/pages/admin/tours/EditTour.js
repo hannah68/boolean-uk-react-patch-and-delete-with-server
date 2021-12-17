@@ -62,7 +62,7 @@ function EditTourPage(props) {
       const fetchDataParams = {
         url: `${APIEndpoints.tours}/${tourId}`,
         options: fetchOptions,
-        cb: navigate(LocalRoutes.admin)
+        cb: () => navigate(LocalRoutes.admin)
       }
 
       fetchData(fetchDataParams)
