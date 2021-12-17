@@ -8,10 +8,7 @@ import TicketsList from "./components/tickets/TicketsList"
 import { LocalRoutes } from "../../config.js"
 
 function UserRouter (props) {
-  const { data } = props
-  const { tours, tickets } = data
-
-  //console.log('User router', data, tours, tickets)
+  const { tours, setTours, tickets, setTickets } = props
 
   return (
     <>
@@ -33,12 +30,12 @@ function UserRouter (props) {
       <main>
 
         <Routes>
-          <Route path={LocalRoutes.home} element={<HomePage tours={tours.data}/>} />
+          <Route path={LocalRoutes.home} element={<HomePage tours={tours}/>} />
           <Route
             path={LocalRoutes.toursBookWithId}
-            element={<BookTicket tickets={tickets.data} setTickets={tickets.setData}/>}
+            element={<BookTicket tickets={tickets} setTickets={setTickets}/>}
           />
-          <Route path={LocalRoutes.tickets} element={<TicketsList tickets={tickets.data}/>} />
+          <Route path={LocalRoutes.tickets} element={<TicketsList tickets={tickets}/>} />
         </Routes>
 
       </main>

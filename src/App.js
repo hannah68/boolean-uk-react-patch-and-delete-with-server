@@ -14,45 +14,20 @@ function App() {
 
   const [tours, setTours] = useState([])
   const [tickets, setTickets] = useState([])
-  const [data, setData] = useState({
-    tours: {
-      data: tours,
-      setData: setTours
-    },
-    tickets: {
-      data: tickets,
-      setData: setTickets
-    }
-  })
+
+  console.log('In App')
 
   useEffect(() => {
 
-    const appData = {
-      tours: {
-        data: tours,
-        setData: setTours
-      },
-      tickets: {
-        data: tickets,
-        setData: setTickets
-      }
-    }
-
     let fetchParams = {
       url: APIEndpoints.tours,
-      cb: tourData => {
-        appData.tours.data = tourData
+      cb: tourData => setTours(tourData)
+    }
+    fetchData(fetchParams)
 
-        fetchParams = {
-          url: APIEndpoints.tickets,
-          cb: ticketData => {
-            appData.tickets.data = ticketData
-            setData(appData)
-          }
-        }
-
-        fetchData(fetchParams)
-      }
+    fetchParams = {
+      url: APIEndpoints.tickets,
+      cb: ticketData => setTickets(ticketData)
     }
     fetchData(fetchParams)
 
@@ -62,8 +37,28 @@ function App() {
     <>
       <h1>Tour Manager</h1>
       <Routes>
-        <Route path={`${LocalRoutes.home}*`} element={<UserRouter data={data} setData={setData}/>} />
-        <Route path={`${LocalRoutes.admin}/*`} element={<AdminRouter data={data} setData={setData}/>} />
+        <Route
+          path={`${LocalRoutes.home}*`}
+          element={
+            <UserRouter
+              tours={tours}
+              setTours={setTours}
+              tickets={tickets}
+              setTickets={setTickets}
+            />
+          }
+        />
+        <Route
+          path={`${LocalRoutes.admin}/*`}
+          element={
+            <AdminRouter
+              tours={tours}
+              setTours={setTours}
+              tickets={tickets}
+              setTickets={setTickets}
+            />
+          }
+        />
       </Routes>
     </>
   )

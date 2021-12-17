@@ -4,21 +4,8 @@ import { fetchData } from "../../../../fetch.js"
 
 import { APIEndpoints } from "../../../../config.js"
 
-function TicketsList() {
-  const [tickets, setTickets] = useState([])
-
-  const setData = data => setTickets(data)
-
-  useEffect(() => {
-
-    const fetchDataParams = {
-      url: APIEndpoints.tickets,
-      cb: setData
-    }
-
-    fetchData(fetchDataParams)
-
-  }, [])
+function TicketsList (props) {
+  const { tickets } = props
 
   return (
     <>

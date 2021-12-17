@@ -5,7 +5,9 @@ import { fetchData } from "../../../../fetch.js"
 
 import { LocalRoutes, APIEndpoints } from "../../../../config.js"
 
-function CreateTourPage(props) {
+function CreateTourPage (props) {
+  const { tours, setTours } = props
+
   const [tourToCreate, setTourToCreate] = useState({
     name: "",
     price: 0,
@@ -32,7 +34,10 @@ function CreateTourPage(props) {
       const fetchDataParams = {
         url: APIEndpoints.tours,
         options: fetchOptions,
-        cb: data => navigate(LocalRoutes.admin)
+        cb: createdTour => {
+          setTours([...tours, createdTour])
+          navigate(LocalRoutes.admin)
+        }
       }
 
       fetchData(fetchDataParams)

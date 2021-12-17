@@ -9,8 +9,7 @@ import TicketsSummary from "./components/tickets/TicketsSummary"
 import { LocalRoutes } from "../../config.js"
 
 function AdminRouter (props) {
-  const { data } = props
-  const { tours, tickets } = data
+  const { tours, setTours, tickets, setTickets } = props
   console.log('blah tours', tours)
   console.log('blah tickets', tickets)
 
@@ -37,16 +36,16 @@ function AdminRouter (props) {
       <main>
 
         <Routes>
-          <Route path={LocalRoutes.adminHome} element={<Dashboard tours={tours.data} />} />
+          <Route path={LocalRoutes.adminHome} element={<Dashboard tours={tours} />} />
           <Route
             path={LocalRoutes.adminToursCreate}
-            element={<CreateTourPage tours={tours.data} setTours={tours.setData} />}
+            element={<CreateTourPage tours={tours} setTours={setTours} />}
           />
           <Route
             path={LocalRoutes.adminToursEditWithId}
-            element={<EditTourPage tours={tours.data} setTours={tours.setData} />}
+            element={<EditTourPage tours={tours} setTours={setTours} />}
           />
-          <Route path={LocalRoutes.adminTicketsSummary} element={<TicketsSummary tickets={tickets.data}/>} />
+          <Route path={LocalRoutes.adminTicketsSummary} element={<TicketsSummary tickets={tickets}/>} />
         </Routes>
 
       </main>
