@@ -7,19 +7,15 @@ import { APIEndpoints } from "../../../../config.js"
 function TicketsList (props) {
   const { tickets } = props
 
-  console.log('tickets', tickets)
-
   return (
     <>
       <h3>Tickets</h3>
       <ul>
-        {tickets.map((ticket, index) => {
+        {tickets.map((ticket) => {
           const { email, quantity, date, tour, id } = ticket
 
-          console.log('my ticket info', email, quantity, date, tour)
-
           return (
-            <li key={index}>
+            <li key={id}>
               <h3>{tour.name}</h3>
               <p>Email: {email}</p>
               <p>Quantity: {quantity}</p>

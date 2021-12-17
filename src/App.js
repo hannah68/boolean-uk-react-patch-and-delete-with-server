@@ -15,8 +15,6 @@ function App() {
   const [tours, setTours] = useState([])
   const [tickets, setTickets] = useState([])
 
-  console.log('In App')
-
   useEffect(() => {
 
     let fetchParams = {

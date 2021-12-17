@@ -24,7 +24,10 @@ function BookTicket (props) {
 
   useEffect(() => {
 
-    if ( submitted ) {
+    if ( submitted && location.state ) {
+
+      const { tour } = location.state
+      ticketToCreate.tourId = tour.id
 
       let fetchOptions = {
         method: 'POST',
@@ -40,18 +43,15 @@ function BookTicket (props) {
         cb: bookedTicket => {
           const { tour } = location.state
           const myTicket = {
+            ...ticketToCreate,
             id: bookedTicket.id,
-            tourId: ticketToCreate.tourId,
-            email: ticketToCreate.email,
-            quantity: ticketToCreate.quantity,
-            date: ticketToCreate.date,
             tour: {
                 id: tour.id,
                 name: tour.name,
                 price: tour.price
             }
           }
-          //console.log('book', ticketToCreate)
+          
           setTickets([...tickets, myTicket])
           navigate(LocalRoutes.tickets)
         }
@@ -65,16 +65,7 @@ function BookTicket (props) {
 
   function handleSubmit(event) {
     event.preventDefault()
-
-    if (location.state) {
-      const { tour } = location.state
-      console.log('blahdsaf', tour)
-      setTicketToCreate({
-        ...ticketToCreate,
-        tourId: tour.id
-      })
-      setSubmitted(true)
-    }
+    setSubmitted(true)
   }
 
   function handleChange(event) {
