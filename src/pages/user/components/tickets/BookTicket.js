@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
-import { fetchData } from "../../../fetch.js"
+import { fetchData } from "../../../../fetch.js"
 
-import { LocalRoutes, APIEndpoints } from "../../../config.js"
+import { LocalRoutes, APIEndpoints, UIText } from "../../../../config.js"
 
-function BookTicket() {
+function BookTicket (props) {
+  const { tickets, setTickets } = props
+
   const [ticketToCreate, setTicketToCreate] = useState({
     tourId: null,
     email: "",
@@ -22,9 +24,12 @@ function BookTicket() {
 
   useEffect(() => {
 
-    if ( submitted ) {
+    if ( submitted && location.state ) {
 
-      const fetchOptions = {
+      const { tour } = location.state
+      ticketToCreate.tourId = tour.id
+
+      let fetchOptions = {
         method: 'POST',
         headers: {
           "Content-Type": 'application/json'
@@ -35,23 +40,34 @@ function BookTicket() {
       const fetchDataParams = {
         url: APIEndpoints.tickets,
         options: fetchOptions,
-        cb: data => navigate(LocalRoutes.tickets)
+        cb: bookedTicket => {
+          const { tour } = location.state
+
+          // this creates a ticket in its cached form, for display
+          const myTicket = {
+            ...ticketToCreate,
+            id: bookedTicket.id,
+            tour: {
+                id: tour.id,
+                name: tour.name,
+                price: tour.price
+            }
+          }
+
+          setTickets([...tickets, myTicket])
+          navigate(LocalRoutes.tickets)
+        }
       }
 
       fetchData(fetchDataParams)
       setSubmitted(false);
     }
 
-  }, [ticketToCreate, navigate, submitted])
+  }, [location.state, tickets, setTickets, ticketToCreate, navigate, submitted])
 
   function handleSubmit(event) {
     event.preventDefault()
-
-    if (location.state) {
-      const { tour } = location.state
-      setTicketToCreate({ ...ticketToCreate, tourId: tour.id })
-      setSubmitted(true)
-    }
+    setSubmitted(true)
   }
 
   function handleChange(event) {
@@ -63,9 +79,9 @@ function BookTicket() {
 
   return (
     <>
-      <h2>Book Tickets</h2>
+      <h2>{UIText.ticketBook}</h2>
       <form className="form-stack" onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">{UIText.ticketEmail}</label>
         <input
           type="email"
           id="email"
@@ -73,7 +89,7 @@ function BookTicket() {
           onChange={handleChange}
           value={ticketToCreate.email}
         />
-        <label htmlFor="quantity">Quantity</label>
+        <label htmlFor="quantity">{UIText.ticketQuantity}</label>
         <input
           type="text"
           id="quantity"
@@ -81,7 +97,7 @@ function BookTicket() {
           onChange={handleChange}
           value={ticketToCreate.quantity}
         />
-        <label htmlFor="date">Date</label>
+        <label htmlFor="date">{UIText.ticketDate}</label>
         <input
           type="datetime-local"
           id="date"
@@ -89,9 +105,9 @@ function BookTicket() {
           onChange={handleChange}
           value={ticketToCreate.date}
         />
-        <button type="submit">Book Ticket</button>
-        <Link to="/">Cancel</Link>
+        <button type="submit">{UIText.ticketBook}</button>
       </form>
+      <button onClick={() => navigate(LocalRoutes.home)}>{UIText.cancel}</button>
     </>
   )
 }

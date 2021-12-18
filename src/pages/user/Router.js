@@ -1,26 +1,32 @@
 import { Route, Routes } from "react-router"
 import { Link } from "react-router-dom"
 
-import HomePage from "./Home"
-import BookTicket from "./tickets/BookTicket"
-import ViewTickets from "./tickets/ViewTickets"
+import HomePage from "./components/Home"
+import BookTicket from "./components/tickets/BookTicket"
+import TicketsList from "../components/TicketsList"
+import EditTicket from "./components/tickets/EditTicket"
 
-import { LocalRoutes } from "../../config.js"
+import { LocalRoutes, UIText } from "../../config.js"
 
-function UserRouter() {
+function UserRouter (props) {
+  const { tours, tickets, setTickets } = props
+
+  const path = LocalRoutes.ticketsEdit
+  const pathText = UIText.ticketEdit
+
   return (
     <>
-      <h2>User Pages</h2>
+      <h2>{UIText.userPages}</h2>
       <nav>
         <ul>
           <li>
-            <Link to={LocalRoutes.home}>Home</Link>
+            <Link to={LocalRoutes.home}>{UIText.home}</Link>
           </li>
           <li>
-            <Link to={LocalRoutes.tickets}>Tickets</Link>
+            <Link to={LocalRoutes.tickets}>{UIText.tickets}</Link>
           </li>
           <li>
-            <Link to={LocalRoutes.admin}>Admin Pages</Link>
+            <Link to={LocalRoutes.admin}>{UIText.adminPages}</Link>
           </li>
         </ul>
       </nav>
@@ -28,9 +34,26 @@ function UserRouter() {
       <main>
 
         <Routes>
-          <Route path={LocalRoutes.home} element={<HomePage />} />
-          <Route path={LocalRoutes.toursBookWithId} element={<BookTicket />} />
-          <Route path={LocalRoutes.tickets} element={<ViewTickets />} />
+          <Route path={LocalRoutes.home} element={<HomePage tours={tours}/>} />
+          <Route
+            path={LocalRoutes.toursBookWithId}
+            element={<BookTicket tickets={tickets} setTickets={setTickets}/>}
+          />
+          <Route
+            path={LocalRoutes.tickets}
+            element={
+              <TicketsList
+                tickets={tickets}
+                isSummary={false}
+                path={path}
+                pathText={pathText}
+              />
+            }
+          />
+          <Route
+            path={LocalRoutes.ticketsEditWithId}
+            element={<EditTicket tickets={tickets} setTickets={setTickets} />}
+          />
         </Routes>
 
       </main>

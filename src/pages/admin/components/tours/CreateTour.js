@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
-import { fetchData } from "../../../fetch.js"
+import { fetchData } from "../../../../fetch.js"
 
-import { LocalRoutes, APIEndpoints } from "../../../config.js"
+import { LocalRoutes, APIEndpoints, UIText } from "../../../../config.js"
 
-function CreateTourPage(props) {
+function CreateTourPage (props) {
+  const { tours, setTours } = props
+
   const [tourToCreate, setTourToCreate] = useState({
     name: "",
     price: 0,
@@ -32,14 +34,17 @@ function CreateTourPage(props) {
       const fetchDataParams = {
         url: APIEndpoints.tours,
         options: fetchOptions,
-        cb: data => navigate(LocalRoutes.admin)
+        cb: createdTour => {
+          setTours([...tours, createdTour])
+          navigate(LocalRoutes.admin)
+        }
       }
 
       fetchData(fetchDataParams)
       setSubmitted(false);
     }
 
-  }, [navigate, tourToCreate, submitted])
+  }, [navigate, tourToCreate, tours, setTours, submitted])
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -55,9 +60,9 @@ function CreateTourPage(props) {
 
   return (
     <>
-      <h3>Create a Tour</h3>
+      <h3>{UIText.tourCreate}</h3>
       <form className="form-stack" onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">{UIText.tourName}</label>
         <input
           type="text"
           id="name"
@@ -65,7 +70,7 @@ function CreateTourPage(props) {
           onChange={handleChange}
           value={tourToCreate.name}
         />
-        <label htmlFor="price">price</label>
+        <label htmlFor="price">{UIText.tourPrice}</label>
         <input
           type="text"
           id="price"
@@ -73,8 +78,9 @@ function CreateTourPage(props) {
           onChange={handleChange}
           value={tourToCreate.price}
         />
-        <button type="submit">Create Tour</button>
+        <button type="submit">{UIText.tourCreate}</button>
       </form>
+      <button onClick={() => navigate(LocalRoutes.admin)}>{UIText.cancel}</button>
     </>
   )
 }
