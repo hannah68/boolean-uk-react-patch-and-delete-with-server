@@ -11,6 +11,11 @@
       "price": 14
     },
     {
+      "id": 3,
+      "name": "City of London",
+      "price": 24
+    },
+    {
       "price": "11.50",
       "name": "Big Ben",
       "id": 4
