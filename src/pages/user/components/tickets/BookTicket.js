@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 import { fetchData } from "../../../../fetch.js"
 
@@ -106,8 +106,8 @@ function BookTicket (props) {
           value={ticketToCreate.date}
         />
         <button type="submit">{UIText.bookTickets}</button>
-        <button onClick={() => navigate(LocalRoutes.home)}>{UIText.cancel}</button>
-      </form>
+      </form>      
+      <button onClick={() => navigate(LocalRoutes.home)}>{UIText.cancel}</button>
     </>
   )
 }

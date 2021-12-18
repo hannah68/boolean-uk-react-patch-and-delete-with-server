@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 import { fetchData } from "../../../../fetch.js"
 
@@ -129,8 +129,8 @@ function EditTourPage(props) {
         <button type="button" onClick={() => handleDelete(tourToEdit)}>
           {UIText.deleteTour}
         </button>
-        <button onClick={() => navigate(LocalRoutes.admin)}>{UIText.cancel}</button>
       </form>
+      <button onClick={() => navigate(LocalRoutes.admin)}>{UIText.cancel}</button>
     </>
   )
 }
