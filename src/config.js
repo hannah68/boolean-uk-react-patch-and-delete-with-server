@@ -29,6 +29,8 @@ export class UIText {
   static userHome = "User Home"
   static dashboard = "Dashboard"
   static home = "Home"
+
+  static userPages = "User Pages"
   static adminPages = "Admin Pages"
 
   static tickets = "Tickets"
