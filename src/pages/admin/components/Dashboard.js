@@ -6,7 +6,7 @@ function Dashboard(props) {
   const { tours } = props
 
   const path = LocalRoutes.adminToursEdit
-  const pathText = UIText.editDeleteTour
+  const pathText = UIText.tourEditDelete
 
   return (
     <ToursList tours={tours} path={path} pathText={pathText}/>

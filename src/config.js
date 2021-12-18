@@ -51,7 +51,7 @@ export class UIText {
   static tour = 'Tour'
   static tourEditDelete = "Edit/Delete Tour"
   static tourEdit = "Edit Tour"
-  static toureelete = "Delete Tour"
+  static tourDelete = "Delete Tour"
   static tourPrice = "Price"
   static tourName = "Name"
 

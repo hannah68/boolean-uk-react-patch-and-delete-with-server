@@ -80,7 +80,7 @@ function EditTicket (props) {
 
           // this creates a ticket in its cached form, for display
           const myTicket = {
-            ...ticketToEdit,
+            ...thisTicket,
             id: editedTicket.id,
             tour: {
                 id: tour.id,
