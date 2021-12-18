@@ -23,7 +23,7 @@ function AdminRouter (props) {
             <Link to={LocalRoutes.admin}>{UIText.dashboard}</Link>
           </li>
           <li>
-            <Link to={LocalRoutes.adminToursCreate}>{UIText.createTour}</Link>
+            <Link to={LocalRoutes.adminToursCreate}>{UIText.tourCreate}</Link>
           </li>
           <li>
             <Link to={LocalRoutes.adminTicketsSummary}>{UIText.tickets}</Link>

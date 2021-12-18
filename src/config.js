@@ -5,6 +5,8 @@ export class LocalRoutes {
     static tours = "/tours"
     static toursBook = `${LocalRoutes.tours}/book`
     static toursBookWithId = `${LocalRoutes.toursBook}/:id`
+    static ticketsEdit = `${LocalRoutes.tickets}/edit`
+    static ticketsEditWithId = `${LocalRoutes.ticketsEdit}/:id`
 
     static adminHome = "/"
     static adminTours = "tours"
@@ -26,28 +28,30 @@ export class UIText {
   static title = "Tour Manager"
   static userHome = "User Home"
   static dashboard = "Dashboard"
-  static createTour = "Create Tour"
-  static tickets = "Tickets"
-
   static home = "Home"
   static adminPages = "Admin Pages"
 
-  static bookTickets = "Book Tickets"
+  static tickets = "Tickets"
+  static ticketsBook = "Book Tickets"
+  static ticketBook = "Book Ticket(s)"
+  static ticketEditDelete = "Edit/Delete Ticket(s)"
+  static ticketEdit = "Edit Ticket(s)"
+  static ticketDelete = "Delete Ticket(s)"
   static ticketQuantity = "Quantity"
   static ticketDate = "Date"
   static ticketEmail = "Email"
   static ticketPrice = "Price per Ticket"
+
   static orderTotal = "Total"
   static orderReference = "Ref"
   static cancel = "Cancel"
 
-  static availableTours = "Available Tours"
+  static tourCreate = "Create Tour"
+  static toursAvailable = "Available Tours"
   static tour = 'Tour'
-
-  static editDeleteTour = "Edit/Delete Tour"
-  static editTour = "Edit Tour"
-  static deleteTour = "Delete Tour"
-
+  static tourEditDelete = "Edit/Delete Tour"
+  static tourEdit = "Edit Tour"
+  static toureelete = "Delete Tour"
   static tourPrice = "Price"
   static tourName = "Name"
 

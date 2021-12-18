@@ -60,25 +60,25 @@ function CreateTourPage (props) {
 
   return (
     <>
-      <h3>{UIText.createTour}</h3>
+      <h3>{UIText.tourCreate}</h3>
       <form className="form-stack" onSubmit={handleSubmit}>
-        <label htmlFor={UIText.tourName}>{UIText.tourName}</label>
+        <label htmlFor="name">{UIText.tourName}</label>
         <input
           type="text"
-          id={UIText.tourName}
-          name={UIText.tourName}
+          id="name"
+          name="name"
           onChange={handleChange}
           value={tourToCreate.name}
         />
-        <label htmlFor={UIText.tourPrice}>{UIText.tourPrice}</label>
+        <label htmlFor="price">{UIText.tourPrice}</label>
         <input
           type="text"
-          id={UIText.tourPrice}
-          name={UIText.tourPrice}
+          id="price"
+          name="price"
           onChange={handleChange}
           value={tourToCreate.price}
         />
-        <button type="submit">{UIText.createTour}</button>
+        <button type="submit">{UIText.tourCreate}</button>
       </form>
       <button onClick={() => navigate(LocalRoutes.admin)}>{UIText.cancel}</button>
     </>

@@ -25,16 +25,9 @@
     {
       "id": 1,
       "tourId": 1,
-      "email": "steve@mail.com",
+      "email": "steve@mail.co.uk",
       "quantity": "4",
       "date": "2021-12-14T12:34:47"
-    },
-    {
-      "tourId": 1,
-      "email": "steve@glowkeeper.uk",
-      "quantity": "5",
-      "date": "2021-12-17T22:44",
-      "id": 2
     }
   ]
 }

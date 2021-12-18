@@ -7,16 +7,16 @@ function ToursList (props) {
 
   return (
     <>
-      <h3>{UIText.availableTours}</h3>
+      <h3>{UIText.toursAvailable}</h3>
       <ul>
         {tours.map((tour) => {
-          const { name, price } = tour
+          const { name, price, id } = tour
 
           return (
-            <li key={tour.id}>
+            <li key={id}>
               <h3>{name}</h3>
               <p>{UIText.tourPrice}: £{price}</p>
-              <Link to={`${path}/${tour.id}`} state={{ tour }}>
+              <Link to={`${path}/${id}`} state={{ tour }}>
                 {pathText}
               </Link>
             </li>

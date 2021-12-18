@@ -4,11 +4,15 @@ import { Link } from "react-router-dom"
 import HomePage from "./components/Home"
 import BookTicket from "./components/tickets/BookTicket"
 import TicketsList from "../components/TicketsList"
+import EditTicket from "./components/tickets/EditTicket"
 
 import { LocalRoutes, UIText } from "../../config.js"
 
 function UserRouter (props) {
   const { tours, tickets, setTickets } = props
+
+  const path = LocalRoutes.ticketsEdit
+  const pathText = UIText.ticketEdit
 
   return (
     <>
@@ -41,8 +45,14 @@ function UserRouter (props) {
               <TicketsList
                 tickets={tickets}
                 isSummary={false}
+                path={path}
+                pathText={pathText}
               />
             }
+          />
+          <Route
+            path={LocalRoutes.ticketsEditWithId}
+            element={<EditTicket tickets={tickets} setTickets={setTickets} />}
           />
         </Routes>
 

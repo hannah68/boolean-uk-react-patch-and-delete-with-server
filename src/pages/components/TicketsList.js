@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom"
+
 import TicketsTable from './TicketsTable'
 
 import { UIText } from "../../config.js"
 
 function TicketsList (props) {
-  const { tickets, isSummary } = props
+  const { tickets, isSummary, path, pathText } = props
 
   return (
     <>
@@ -23,6 +25,9 @@ function TicketsList (props) {
                 <p>{UIText.ticketQuantity}: {quantity}</p>
                 <p>{UIText.ticketDate}: {date}</p>
                 <p>{UIText.orderReference}: {id}</p>
+                <Link to={`${path}/${id}`} state={{ ticket, tour }}>
+                  {pathText}
+                </Link>
               </li>
             )
           })}
