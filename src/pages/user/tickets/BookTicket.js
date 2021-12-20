@@ -65,7 +65,7 @@ function BookTicket() {
         id="quantity"
         name="quantity"
         onChange={handleChange}
-        value={ticketToCreate.email}
+        value={ticketToCreate.quantity}
       />
       <label htmlFor="date">Date</label>
       <input
