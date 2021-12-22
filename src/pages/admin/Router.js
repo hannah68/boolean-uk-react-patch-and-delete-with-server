@@ -7,7 +7,8 @@ import TicketsSummary from "./tickets/Summary"
 import EditTourPage from "./tours/EditTour"
 
 function AdminRouter() {
-  const [tours, setTours] = useState([])
+  const [tours, setTours] = useState([]);
+  
 
   console.log({ tours })
 
@@ -41,11 +42,16 @@ function AdminRouter() {
         <Route path="/" element={<Dashboard tours={tours} />} />
         <Route
           path="/tours/create"
-          element={<CreateTourPage tours={tours} setTours={setTours} />}
+          element={<CreateTourPage 
+            tours={tours} 
+            setTours={setTours} />}
         />
         <Route
           path="/tours/:id/edit"
-          element={<EditTourPage tours={tours} setTours={setTours} />}
+          element={<EditTourPage 
+            tours={tours} 
+            setTours={setTours}
+            />}
         />
         <Route path="tickets/summary" element={<TicketsSummary />} />
       </Routes>

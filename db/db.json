@@ -3,22 +3,19 @@
     {
       "id": 1,
       "name": "Madame Tussauds",
-      "price": 10
+      "price": "13"
     },
     {
       "id": 2,
       "name": "Natural History Museum",
-      "price": 14
+      "price": "20",
+      "tickets": []
     },
     {
-      "id": 3,
-      "name": "City of London",
-      "price": 24
-    },
-    {
-      "price": 11.50,
+      "price": "12.7",
       "name": "Big Ben",
-      "id": 4
+      "id": 4,
+      "tickets": []
     }
   ],
   "tickets": [
@@ -27,13 +24,6 @@
       "tourId": 1,
       "email": "steve@mail.com",
       "quantity": 4,
-      "date": "2021-12-14T12:34:47"
-    },
-    {
-      "id": 2,
-      "tourId": 3,
-      "email": "rico@mail.com",
-      "quantity": 1,
       "date": "2021-12-14T12:34:47"
     }
   ]
